@@ -1,0 +1,57 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer
+    #drawer
+    [opened]="togglenav"
+    class="example-sidenav"
+    mode="side"
+    position="end"
+  >
+    <mat-nav-list role="list">
+      <mat-list-item role="listitem">
+        <div class="list">
+          <a matLine routerLink="/home">اعمال اليوم</a>
+          <mat-icon>today</mat-icon>
+        </div>
+      </mat-list-item>
+        @if(role==='admin'){
+      <mat-list-item role="listitem">
+
+        <div class="list" >
+          <a matLine routerLink="/home/userlist">قوائم المستخدمين</a>
+          <mat-icon>home</mat-icon>
+        </div>
+      </mat-list-item>
+    }
+      <mat-list-item role="listitem">
+        <div class="list">
+          <a matLine routerLink="/home/work">أرسال الملفات</a>
+          <mat-icon>send</mat-icon>
+        </div> </mat-list-item
+       
+
+      >
+      @if(role==='admin'){
+        <mat-list-item role="listitem">
+        <div class="list">
+          <a matLine routerLink="/home/file_type">أنواع الملفات</a>
+          <mat-icon>folder_special</mat-icon>
+          
+        </div>
+      </mat-list-item>
+    }
+      <mat-list-item role="listitem">
+        <div class="list">
+          <a matLine routerLink="/home/workhistorie">اعمال سابقة</a>
+          <mat-icon>work</mat-icon>
+        </div>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+  <div class="example-sidenav-content">
+    <mat-card class="card">
+      <mat-card-content>
+        <router-outlet></router-outlet>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</mat-drawer-container>

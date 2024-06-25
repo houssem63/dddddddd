@@ -1,0 +1,19 @@
+@if (images) {
+	
+	  
+		<ngb-carousel>
+            @for (img of images ; track  img)
+	{
+		
+		
+		<ng-template ngbSlide>
+			<div class="picsum-img-wrapper">
+
+				<img [src]="img?.url" alt="Random first slide"  />
+			</div>
+			
+		</ng-template>
+	}
+	</ngb-carousel>	  
+  
+}

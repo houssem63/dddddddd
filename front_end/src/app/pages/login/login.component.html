@@ -1,0 +1,42 @@
+<div class="signin-content">
+    
+    <div class="left-top-background"></div>
+  <div class="right-top-background"></div>
+  <div class="bottom-background"></div>
+  <mat-card>
+      <mat-card-content>
+        @if (alerts.message != ""){
+          <ngb-alert [type]="alerts.type" (closed)="close()">{{ alerts.message }}</ngb-alert>
+        
+        }
+       
+       
+       <form  [formGroup]="form" (submit)="submit()">
+          <p>الرجاء تسجيل الدخول للمتابعة</p>
+          <mat-form-field class="full-width-input">
+            <input matInput placeholder="اسم المستخدم" formControlName="username"  required>
+            <mat-error>
+              يرجى إبلاغ اسم المستخدم الخاص بك            </mat-error>
+          </mat-form-field>
+    
+
+
+          <mat-form-field class="full-width-input">
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="كلمة المرور" formControlName="password" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="form.get('password')?.hasError('required')">
+              يرجى إبلاغ كلمة المرور الخاصة بك
+            </mat-error>
+            <mat-error  *ngIf="form.get('password')?.hasError('invalidPassword')">
+              Password must contain at least one digit, one lowercase letter, one uppercase letter, one special character, and be at least 8 characters long.        
+                </mat-error>
+          </mat-form-field>
+
+
+          <button mat-raised-button color="primary" type="submit">تسجيل الدخول</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>

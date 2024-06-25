@@ -1,0 +1,48 @@
+.grid-container2 {
+  direction: rtl;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Four columns */
+    grid-gap: 10px; /* Gap between grid items */
+  }
+  
+  .grid-item2 {
+    padding: 10px;
+    height: auto;
+  
+  
+  }
+  p{
+        direction: rtl;
+
+  }
+    .imgcontainer{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      margin-bottom: 5px;
+    }
+    img{
+      height: 100px;
+      width: 100px;
+      aspect-ratio: auto 1280 / 720;
+
+    }
+    .example-card {
+      max-width: 400px;
+      height: 300px
+    }
+   
+    img:hover{
+      cursor: pointer;
+    }
+    .btn{
+       display: flex;
+       gap: 2px;
+    }
+    @media screen and (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for smaller viewports */
+      }
+    }

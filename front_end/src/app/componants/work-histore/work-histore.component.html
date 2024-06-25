@@ -1,0 +1,107 @@
+<div class="center">
+  <h1>اعمال سابقة</h1>
+
+<button (click)="save()" mat-raised-button color="primary">بحث</button>
+  <form [formGroup]="form" class="grid-container">
+    <div class="item">
+      <mat-form-field>
+        <mat-label>أدخل نطاقًا زمنيًاأدخل نطاقًا زمنيًا</mat-label>
+        <mat-date-range-input  [rangePicker]="picker">
+          <input matStartDate formControlName="start" placeholder="Start date">
+          <input matEndDate formControlName="end" placeholder="End date">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      
+        @if (form.get('start')?.hasError('matStartDateInvalid')) {
+          <mat-error>Invalid start date</mat-error>
+        }
+        @if (form.get('end')?.hasError('matEndDateInvalid')) {
+          <mat-error>Invalid end date</mat-error>
+        }
+      </mat-form-field>
+      
+    </div>
+    <div class="item">
+      <mat-form-field>
+        <mat-label>المستخدمين </mat-label>
+        <mat-select formControlName="user">
+          @for(user of users ;track user){
+          <mat-option [value]="user"
+            >{{ user.firstname }} {{ user.lastname }}</mat-option
+          >
+
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="item item4">@if(form.get('start')?.value!=null){
+      start: {{form.get('start')?.value | date:'shortDate' }}<br/>
+    
+      }
+      @if(form.get('end')?.value!=null){
+        <br/>
+      
+        end: {{form.get('end')?.value | date:'shortDate' }}}
+    </div>
+    <div class="item item5">{{form.get('user')?.value?.lastname}} {{form.get('user')?.value?.firstname}}</div>
+  </form>
+  <div class="grid-container2">
+    <div class="grid-item2" *ngFor="let file of files">
+    
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>نوع الملف:{{file.filetype}}</mat-card-title>
+          <mat-card-subtitle>المرسل :{{file.sendername}} {{file.senderlastname}} </mat-card-subtitle>
+          <mat-card-subtitle>المستقبل :{{file.resevername}} {{file.reseverlastname}}</mat-card-subtitle>
+
+        </mat-card-header> 
+        <mat-card-content class="imgcontainer">
+          @for(path of file.paths;track path;let idx = $index){
+      
+            @if(file.type.search("application/pdf")!=-1||file?.types[idx]?.search("application/pdf")!=-1){
+              <div class="btn">
+                <button (click)="openDialog(path)" mat-raised-button color="primary">Open PDF</button>
+            
+                
+              </div>
+            }
+            @if(file.type.startsWith("image")&&file?.types[idx]?.startsWith("image")){
+              <div style="display: flex; flex-direction: column; gap: 3px;">
+                <img [src]="path" alt="" 
+             
+                
+                
+                (click)="openImage(file.paths)">
+        
+              </div>
+            
+            }}
+          <mat-divider></mat-divider>
+     
+
+        </mat-card-content>
+       
+        <mat-card-actions>
+        <div style="display: flex;flex-direction: column;">
+            <button (click)="downloadFile(file.filename)"  mat-raised-button color="primary">
+              <div style="display: flex; align-items: start; justify-content:center;">
+  
+          
+              <mat-icon>download</mat-icon>
+  
+             <p> تحميل الملف</p>    </div>
+          </button>
+
+          <mat-card-subtitle> {{file.createdAt | fromnow }}</mat-card-subtitle>
+        </div>
+          </mat-card-actions>
+      </mat-card>
+    
+    
+    </div>
+  </div>
+  
+</div>

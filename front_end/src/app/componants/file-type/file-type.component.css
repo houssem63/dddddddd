@@ -1,0 +1,35 @@
+table {
+    width: 100%;
+    direction: rtl;
+overflow-y: scroll; 
+max-height: 100%; }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+   
+  }
+  .options{
+    display: flex;
+    
+    justify-content: space-between;
+    align-items: center;
+  }
+  .container{
+    direction: rtl
+}
+
+@media (max-width: 576px) {
+  .mat-elevation-z8 {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+}}
+.icons{
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+
+}
+.icons:hover{
+  cursor: pointer;
+}

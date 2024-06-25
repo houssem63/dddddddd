@@ -1,0 +1,48 @@
+<h1>أرسل العمل </h1>
+
+<button (click)="onSubmit()" mat-raised-button color="primary">إرسال</button>
+
+<form [formGroup]="form" class="grid-container" (submit)="onSubmit()">
+  <div class="item"><div>
+    <button mat-raised-button color="primary" type="button" (click)="filepicker.click()">رفع ملف</button>
+    <input type="file" multiple hidden onclick="value=null" #filepicker (change)="onFileChange($event)">
+  </div> </div>
+  <div class="item"><mat-form-field>
+    <mat-label>المستخدمين </mat-label>
+    <mat-select formControlName="userID" (selectionChange)="selecteduser($event)">
+      @for (user of users; track user) {
+        <mat-option [value]="user">{{user.lastname}} {{user.firstname}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>
+  <div class="item "> <mat-form-field>
+    <mat-label>نوع الملف </mat-label>
+    <mat-select formControlName="fileID" (selectionChange)="selectedfile($event)">
+  
+      @for (fileType of file_types; track fileType) {
+        <mat-option [value]="fileType">{{fileType.libelle}} </mat-option>
+      }
+    </mat-select>
+  </mat-form-field></div>
+
+  <div class="item ">  <mat-form-field class="example-full-width">
+    <mat-label>محتوى</mat-label>
+    <textarea matInput placeholder="محتوى" formControlName="content" (input)="contentchang($event)"></textarea>
+  </mat-form-field></div>
+
+  <div class="item item5"><div *ngFor="let file of selectedFiles" class="fileslist">
+    <img [src]="file.url" *ngIf="file.type.startsWith('image')" alt="Preview"
+     class="FilePreview" (click)="openImage()" 
+     accept="image/*, application/pdf,
+      application/vnd.openxmlformats-officedocument.wordprocessingml.document,
+       application/msword, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+        application/vnd.ms-excel"
+     > 
+    <span>{{ file.name }}</span>
+   <button *ngIf="file.type.startsWith('application')" >openpdf</button>
+  </div > </div>
+  <div class="item item6 "><p>{{selecteduserbyuser}}</p></div>
+  <div class="item item7"><p>{{selectedfilebyuser}}</p></div>
+  <div class="item item8"><p>{{contentchange}}</p></div>
+</form>

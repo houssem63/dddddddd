@@ -1,0 +1,110 @@
+.options{
+    border-collapse: collapse;
+  width: 100%;
+}
+.options, th, td {
+    border: none;
+  }
+td, th {
+    text-align: right;
+    padding: 8px;
+  }
+  
+.FilePreview{
+    max-width: 100px;
+    max-height: 100px;
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+.first_part{
+    display: flex;
+    flex-direction: column;
+}
+.fileslist{
+    display: flex;
+    flex-direction: column;
+}
+  
+  #file-upload-cell {
+    height: auto; /* Allow this cell to adjust its width based on content */
+  }
+
+ 
+  .grid-container {
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr); /* Four equal columns */
+    grid-template-rows: auto auto; /* Two rows with dynamic height */
+    gap: 10px; /* Gap between grid items */
+}
+
+.item {
+    background-color: #f0f0f0;
+    padding: 10px;
+    height: 100px;
+    
+}
+p{
+  max-width: 250px;
+}
+.item5{
+    height: auto;
+    min-height: 100px;
+}
+.item8{
+  overflow-y: scroll;
+}
+@media (max-width: 970px){
+  .grid-container {
+    grid-template-columns: 1fr 1fr; /* Single column on small screens */
+    grid-template-rows: auto; /* Auto height for single row */
+}
+
+.item.item5 {
+  grid-column: 1; /* Span full width */
+  grid-row: 2; /* Below item1 */
+}
+
+.item.item6 {
+   grid-column: 2; /* Span full width */
+  grid-row: 2;/* Change order */
+}
+
+.item.item7 {
+  grid-column: 1; /* Span full width */
+  grid-row: 6; /* Change order */
+}
+
+.item.item8 {
+ grid-column: 2; /* Span full width */
+  grid-row: 6; /* Change order */
+}
+}
+@media (max-width: 576px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* Single column on small screens */
+    grid-template-rows: auto; /* Auto height for single row */
+}
+
+.item.item5 {
+  grid-column: 1; /* Span full width */
+  grid-row: 2; /* Below item1 */
+}
+
+.item.item6 {
+   grid-column: 1; /* Span full width */
+  grid-row: 4;/* Change order */
+}
+
+.item.item7 {
+  grid-column: 1; /* Span full width */
+  grid-row: 6; /* Change order */
+}
+
+.item.item8 {
+ grid-column: 1; /* Span full width */
+  grid-row: 8; /* Change order */
+}
+}

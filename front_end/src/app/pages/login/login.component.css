@@ -1,0 +1,39 @@
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+    height: fit-content;
+    
+  }
+  .signin-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+    background-image: url('../../../assets//3.JPG'); /* Replace with your image path */
+    background-size: cover;
+  }
+  .full-width-input {
+    width: 100%;
+  }
+
+  .left-top-background {
+    position: absolute;
+    top: 0;
+    left: 50;
+    width: 50%; /* Set the width of the left-top background */
+    height: 30%; /* Set the height of the left-top background */
+    background-image: url('../../../assets/Coat_of_arms_of_Tunisia.svg.png'); /* Replace with your image path */
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+
+  
+  .bottom-background {
+  
+    background-image: url('../../../assets//3.JPG'); /* Replace with your image path */
+    background-size: cover;
+  }

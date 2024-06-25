@@ -1,0 +1,34 @@
+
+<mat-toolbar color="primary" >
+<div class="container"> 
+  <div class='leftside'>
+    <button mat-mini-fab aria-label="Menu icon" (click)="emitevent($event)">
+
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="menu">
+      </mat-icon>
+    </button>
+    <a  routerLink="/home">    <img src="../../../assets/affichage.png" class="logo" />
+    </a>
+  </div>
+  <div class="icons">
+    <mat-icon [matMenuTriggerFor]="menu" class="icon" [matBadge]="notifnumber" (click)="resetnumber()">
+      notifications
+     </mat-icon>
+     <mat-menu #menu="matMenu"  class="my-menu">
+      @for(not of notification;track not){
+      <li mat-menu-item>{{not.filetype}} جديدة</li>  
+      }
+    
+    </mat-menu>
+    <mat-icon class="icon">
+      account_circle
+      </mat-icon>
+      <mat-icon class="logout" style="cursor: pointer;" (click)="logout()">logout</mat-icon>
+
+  </div></div>
+ 
+</mat-toolbar>
+<audio id="notificationSound" allow="autoplay">
+  <source src="../../../assets/notification.wav" type="audio/mpeg" >
+  Your browser does not support the audio element.
+</audio>

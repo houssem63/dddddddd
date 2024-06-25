@@ -1,0 +1,18 @@
+
+<form  [formGroup]="form" (submit)="onsubmit()" class="container">
+    <h2 mat-dialog-title>إضافة مستخدم </h2>
+    <mat-dialog-content class="contant">
+      <mat-form-field>
+        <mat-label>الاسم الأول</mat-label>
+        <input formControlName="libelle" matInput >
+        <mat-error>
+          يرجى إبلاغ اسم المستخدم الخاص بك            </mat-error>
+      </mat-form-field>
+     
+   
+    </mat-dialog-content>
+    <mat-dialog-actions class="actions">
+      <button mat-raised-button color="accent" type="button">أغلق</button>
+      <button mat-raised-button color="primary"  type="submit" cdkFocusInitial>تسجيل</button>
+    </mat-dialog-actions>
+  </form>

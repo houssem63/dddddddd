@@ -1,0 +1,13 @@
+.contant{
+    display: flex ;
+    gap: 2px;
+    flex-direction: column;
+}
+.actions{
+    direction: rtl;
+    display: flex;
+    gap: 5px;
+}
+.container{
+    direction: rtl
+}

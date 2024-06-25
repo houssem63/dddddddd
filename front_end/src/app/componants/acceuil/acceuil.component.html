@@ -1,0 +1,65 @@
+
+
+
+<div class="grid-container2">
+  @for (file of files ;track file){
+
+  
+  <div class="grid-item2" >
+
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>نوع الملف:{{file.filetype}}</mat-card-title>
+        <mat-card-subtitle>المرسل :{{file.sendername}} {{file.senderlastname}} </mat-card-subtitle>
+        <mat-card-subtitle>المستقبل :{{file.resevername}} {{file.reseverlastname}}</mat-card-subtitle>
+
+      </mat-card-header>
+      <mat-card-content class="imgcontainer">
+        @for(path of file.paths;track path;let idx = $index){
+      
+        @if(file.type.search("application/pdf")!=-1||file?.types[idx]?.search("application/pdf")!=-1){
+          <div class="btn">
+            <button (click)="openDialog(path)" mat-raised-button color="primary">Open PDF</button>
+        
+          </div>
+        }
+        @if(file.type.startsWith("image")&&file?.types[idx]?.startsWith("image")){
+          <div style="display: flex; flex-direction: column; gap: 3px;">
+            <img [src]="path" alt="" 
+         
+            
+            
+            (click)="openImage(file.paths)">
+    
+          </div>
+        
+        }
+       
+
+        }
+
+        <mat-divider></mat-divider>
+
+
+      </mat-card-content>
+
+      <mat-card-actions>
+        <div style="display: flex;flex-direction: column;">
+          <button (click)="downloadFile(file.filename)"  mat-raised-button color="primary">
+            <div style="display: flex; align-items: start; justify-content:center;">
+
+        
+            <mat-icon>download</mat-icon>
+
+           <p> تحميل الملف</p>    </div></button>
+
+          <mat-card-subtitle> {{file.createdAt | fromnow }}</mat-card-subtitle>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+
+
+  </div>}@empty{
+    <p>لا توجد ملفات اليوم</p>
+  }
+</div>

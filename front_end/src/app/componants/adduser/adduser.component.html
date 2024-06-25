@@ -1,0 +1,95 @@
+
+@if(mode==='add'){
+<form  [formGroup]="form" (submit)="onsubmit()" class="container">
+  <h2 mat-dialog-title>إضافة مستخدم </h2>
+  <mat-dialog-content class="contant">
+    <mat-form-field>
+      <mat-label>الاسم الأول</mat-label>
+      <input formControlName="firstname" matInput >
+      <mat-error>
+        يرجى إبلاغ اسم المستخدم الخاص بك            </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>اسم العائلة</mat-label>
+      <input formControlName="lastname" matInput >
+      <mat-error>
+        يرجى إبلاغ اسم المستخدم الخاص بك            </mat-error>
+    </mat-form-field> 
+    <mat-form-field>
+      <mat-label>اسم المستخدم</mat-label>
+      <input formControlName="username" matInput >
+      <mat-error>
+        يرجى إبلاغ اسم المستخدم الخاص بك            </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>اسم المستخدم</mat-label>
+      <input formControlName="password" matInput >
+      <mat-error>
+        يرجى إبلاغ اسم المستخدم الخاص بك            </mat-error>
+    </mat-form-field>
+   
+    <mat-form-field>
+      <mat-label>دور المستخدم</mat-label>
+      <mat-select formControlName="role" >
+        @for (role of roles; track role) {
+          <mat-option [value]="role.back">{{role.front}}</mat-option>
+        }
+      </mat-select>
+      <mat-error>
+        يرجى إبلاغ اسم المستخدم الخاص بك            </mat-error>
+    </mat-form-field>
+ 
+  </mat-dialog-content>
+  <mat-dialog-actions class="actions">
+    <button mat-raised-button color="accent" type="button">أغلق</button>
+    <button mat-raised-button color="primary" type="submit"  cdkFocusInitial>تسجيل</button>
+  </mat-dialog-actions>
+</form>
+}
+@if(mode==='edit'){
+  <form  [formGroup]="form" (submit)="onsubmit()" class="container">
+  <h2 mat-dialog-title>تغيير معلومات المستخدم</h2>
+  <mat-dialog-content class="contant">
+    <mat-form-field>
+      <mat-label>الاسم الأول</mat-label>
+      <input formControlName="firstname" matInput >
+      <mat-error>
+        يرجى إبلاغ اسم المستخدم الخاص بك            </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>اسم العائلة</mat-label>
+      <input formControlName="lastname" matInput >
+      <mat-error>
+        يرجى إبلاغ اسم المستخدم الخاص بك            </mat-error>
+    </mat-form-field> 
+    <mat-form-field>
+      <mat-label>اسم المستخدم</mat-label>
+      <input formControlName="username" matInput >
+      <mat-error>
+        يرجى إبلاغ اسم المستخدم الخاص بك            </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>اسم المستخدم</mat-label>
+      <input formControlName="password" matInput >
+      <mat-error>
+        يرجى إبلاغ اسم المستخدم الخاص بك            </mat-error>
+    </mat-form-field>
+   
+    <mat-form-field>
+      <mat-label>دور المستخدم</mat-label>
+      <mat-select formControlName="role" >
+        @for (role of roles; track role) {
+          <mat-option [value]="role.back">{{role.front}}</mat-option>
+        }
+      </mat-select>
+      <mat-error>
+        يرجى إبلاغ اسم المستخدم الخاص بك            </mat-error>
+    </mat-form-field>
+ 
+  </mat-dialog-content>
+  <mat-dialog-actions class="actions">
+    <button mat-raised-button color="accent" type="button">أغلق</button>
+    <button mat-raised-button color="primary" type="submit"   cdkFocusInitial>تسجيل</button>
+  </mat-dialog-actions>
+</form>
+}
